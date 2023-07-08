@@ -13,6 +13,7 @@ def test_add_numbers():
     assert add_numbers(0, 0) == 0
 
 if __name__ == "__main__":
+    test_add_numbers()
     cov.stop()
     cov.save()
     cov.report()
