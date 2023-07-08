@@ -1,1 +1,3 @@
-import coverage
+pytest==6.2.4
+coverage==5.5
+requests==2.25.1
