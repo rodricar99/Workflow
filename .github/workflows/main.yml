@@ -1,29 +1,40 @@
+name: Python CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.11
-      
+
       - name: Install dependencies
         run: pip install -r requirements.txt
-      
+
       - name: Upgrade coverage
         run: pip install --upgrade coverage
-      
+
       - name: Run tests
         run: |
           coverage run -m pytest
           coverage report
           coverage xml
-      
+
       - name: Upload coverage report
+        if: always()
         uses: actions/upload-artifact@v2
         with:
           name: coverage-report
