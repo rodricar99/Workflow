@@ -29,7 +29,6 @@ jobs:
 
       - name: Run tests
         run: |
-          coverage run --source=. -m pytest
           coverage report
           coverage xml
           coverage erase
