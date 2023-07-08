@@ -19,11 +19,12 @@ jobs:
         python-version: 3.x
 
     - name: Install dependencies
-      run: pip install coverage
+      run: |
+        pip install coverage
+        pip install pytest
 
     - name: Run tests with coverage
-      run: |
-        coverage run --source=. -m pytest
+      run: coverage run --source=. -m pytest
 
     - name: Generate coverage report
       run: |
